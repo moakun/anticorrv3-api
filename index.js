@@ -37,4 +37,4 @@ app.get('/videoTwo', (req, res) => {
   res.sendFile('Assets/PartTwo.mp4', { root: __dirname });
 });
 
-app.listen(3000, () => console.log('server up and running'));
+app.listen(process.env.PORT, () => console.log('server up and running'));
