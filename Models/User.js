@@ -33,6 +33,21 @@ const userSchema = new Schema({
     min: 6,
     max: 255,
   },
+  arrivedTest: {
+    type: Boolean,
+    default: false,
+  },
+  finishedTest: {
+    type: Boolean,
+    default: false,
+  },
+  score: {
+    type: Number,
+  },
+  gotAttestation: {
+    type: Boolean,
+    default: false,
+  },
   date: {
     type: Date,
     default: Date.now,
