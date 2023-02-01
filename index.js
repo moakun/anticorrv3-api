@@ -29,12 +29,4 @@ app.use('/api/user', authRoute);
 
 connectDB();
 
-app.get('/videoOne', (req, res) => {
-  res.sendFile('Assets/PartOne.mp4', { root: __dirname });
-});
-
-app.get('/videoTwo', (req, res) => {
-  res.sendFile('Assets/PartTwo.mp4', { root: __dirname });
-});
-
 app.listen(process.env.PORT, () => console.log('server up and running'));
