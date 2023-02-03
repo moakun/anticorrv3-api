@@ -7,6 +7,7 @@ const {
   updateTestScore,
   updateAttestation,
   updateTestStatus,
+  preQuiz,
 } = require('../Controllers/userController');
 
 //register
@@ -23,5 +24,7 @@ router.post('/testUpdateScore', updateTestScore);
 router.post('/gotAttestation', updateAttestation);
 
 router.post('/testStatus', updateTestStatus);
+
+router.post('/preQuiz', preQuiz);
 
 module.exports = router;

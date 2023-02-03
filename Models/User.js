@@ -33,6 +33,33 @@ const userSchema = new Schema({
     min: 6,
     max: 255,
   },
+  dispositif: {
+    type: String,
+  },
+  engagement: {
+    type: String,
+  },
+  identification: {
+    type: String,
+  },
+  formation: {
+    type: String,
+  },
+  procedure: {
+    type: String,
+  },
+  dispositifAlert: {
+    type: String,
+  },
+  certifierISO: {
+    type: String,
+  },
+  mepSystem: {
+    type: String,
+  },
+  intention: {
+    type: String,
+  },
   arrivedTest: {
     type: Boolean,
     default: false,

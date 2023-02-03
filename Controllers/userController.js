@@ -71,6 +71,55 @@ const loginUser = async (req, res) => {
   }
 };
 
+// question avant stage
+const preQuiz = async (req, res) => {
+  const {
+    userName,
+    dispositif,
+    engagement,
+    identification,
+    formation,
+    procedure,
+    dispositifAlert,
+    certifierISO,
+    mepSystem,
+    intention,
+  } = req.body;
+
+  try {
+    await User.updateOne(
+      { userName },
+      {
+        $set: {
+          dispositif: dispositif,
+          engagement: engagement,
+          identification: identification,
+          formation: formation,
+          procedure: procedure,
+          dispositifAlert: dispositifAlert,
+          certifierISO: certifierISO,
+          mepSystem: mepSystem,
+          intention: intention,
+        },
+      }
+    );
+    res.status(200).json({
+      userName,
+      dispositif,
+      engagement,
+      identification,
+      formation,
+      procedure,
+      dispositifAlert,
+      certifierISO,
+      mepSystem,
+      intention,
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 // register
 const registerUser = async (req, res) => {
   const { firstName, lastName, userName, companyName, password } = req.body;
@@ -95,6 +144,7 @@ const registerUser = async (req, res) => {
 module.exports = {
   loginUser,
   registerUser,
+  preQuiz,
   updateTestArrived,
   updateTestScore,
   updateAttestation,
