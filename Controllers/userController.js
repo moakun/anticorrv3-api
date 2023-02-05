@@ -7,11 +7,14 @@ const createToken = (_id) => {
 
 // update test status
 const updateTestStatus = async (req, res) => {
-  const { userName, finishedTest } = req.body;
+  const { userName, firstName, lastName, finishedTest } = req.body;
 
   try {
-    await User.updateOne({ userName }, { $set: { finishedTest: true } });
-    res.status(200).json({ userName, finishedTest });
+    await User.updateOne(
+      { userName, firstName, lastName },
+      { $set: { finishedTest: true } }
+    );
+    res.status(200).json({ userName, firstName, lastName, finishedTest });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -19,10 +22,13 @@ const updateTestStatus = async (req, res) => {
 
 //update test score
 const updateTestScore = async (req, res) => {
-  const { userName, score } = req.body;
+  const { userName, firstName, lastName, score } = req.body;
   try {
-    await User.updateOne({ userName }, { $set: { score: score } });
-    res.status(200).json({ userName, score });
+    await User.updateOne(
+      { userName, firstName, lastName },
+      { $set: { score: score } }
+    );
+    res.status(200).json({ userName, firstName, lastName, score });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -30,11 +36,14 @@ const updateTestScore = async (req, res) => {
 
 // update test status
 const updateTestArrived = async (req, res) => {
-  const { userName, arrivedTest } = req.body;
+  const { userName, firstName, lastName, arrivedTest } = req.body;
 
   try {
-    await User.updateOne({ userName }, { $set: { arrivedTest: true } });
-    res.status(200).json({ userName, arrivedTest });
+    await User.updateOne(
+      { userName, firstName, lastName },
+      { $set: { arrivedTest: true } }
+    );
+    res.status(200).json({ userName, firstName, lastName, arrivedTest });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -42,11 +51,14 @@ const updateTestArrived = async (req, res) => {
 
 // update attestation status
 const updateAttestation = async (req, res) => {
-  const { userName, gotAttestation } = req.body;
+  const { userName, firstName, lastName, gotAttestation } = req.body;
 
   try {
-    await User.updateOne({ userName }, { $set: { gotAttestation: true } });
-    res.status(200).json({ userName, gotAttestation });
+    await User.updateOne(
+      { userName, firstName, lastName },
+      { $set: { gotAttestation: true } }
+    );
+    res.status(200).json({ userName, firstName, lastName, gotAttestation });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -75,6 +87,8 @@ const loginUser = async (req, res) => {
 const preQuiz = async (req, res) => {
   const {
     userName,
+    firstName,
+    lastName,
     dispositif,
     engagement,
     identification,
@@ -88,7 +102,7 @@ const preQuiz = async (req, res) => {
 
   try {
     await User.updateOne(
-      { userName },
+      { userName, firstName, lastName },
       {
         $set: {
           dispositif: dispositif,
@@ -105,6 +119,8 @@ const preQuiz = async (req, res) => {
     );
     res.status(200).json({
       userName,
+      firstName,
+      lastName,
       dispositif,
       engagement,
       identification,
