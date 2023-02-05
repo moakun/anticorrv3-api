@@ -64,10 +64,6 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  finishedTest: {
-    type: Boolean,
-    default: false,
-  },
   score: {
     type: Number,
   },

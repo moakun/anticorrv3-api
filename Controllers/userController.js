@@ -5,32 +5,15 @@ const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
 };
 
-// update test status
-const updateTestStatus = async (req, res) => {
-  const { userName, firstName, lastName, finishedTest, companyName } = req.body;
-
-  try {
-    await User.updateOne(
-      { userName, firstName, lastName, companyName },
-      { $set: { finishedTest: true } }
-    );
-    res
-      .status(200)
-      .json({ userName, firstName, lastName, companyName, finishedTest });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
 //update test score
 const updateTestScore = async (req, res) => {
-  const { userName, firstName, lastName, score, companyName } = req.body;
+  const { userName, firstName, lastName, companyName, score } = req.body;
   try {
     await User.updateOne(
       { userName, firstName, lastName, companyName },
       { $set: { score: score } }
     );
-    res.status(200).json({ userName, firstName, companyName, lastName, score });
+    res.status(200).json({ userName, firstName, lastName, companyName, score });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -55,17 +38,11 @@ const updateTestArrived = async (req, res) => {
 
 // update attestation status
 const updateAttestation = async (req, res) => {
-  const { userName, firstName, lastName, gotAttestation, companyName } =
-    req.body;
+  const { userName } = req.body;
 
   try {
-    await User.updateOne(
-      { userName, firstName, lastName, companyName },
-      { $set: { gotAttestation: true } }
-    );
-    res
-      .status(200)
-      .json({ userName, firstName, lastName, gotAttestation, companyName });
+    await User.updateOne({ userName }, { $set: { gotAttestation: true } });
+    res.status(200).json({ userName, gotAttestation });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -173,5 +150,4 @@ module.exports = {
   updateTestArrived,
   updateTestScore,
   updateAttestation,
-  updateTestStatus,
 };

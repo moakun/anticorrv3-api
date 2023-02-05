@@ -23,8 +23,6 @@ router.post('/testUpdateScore', updateTestScore);
 
 router.post('/gotAttestation', updateAttestation);
 
-router.post('/testStatus', updateTestStatus);
-
 router.post('/preQuiz', preQuiz);
 
 module.exports = router;
