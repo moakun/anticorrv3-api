@@ -2,7 +2,7 @@ const User = require('../Models/User');
 const jwt = require('jsonwebtoken');
 
 const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
+  return jwt.sign({ _id }, process.env.TOKEN_SECRET, { expiresIn: '24h' });
 };
 
 //update test score
